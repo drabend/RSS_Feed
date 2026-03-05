@@ -12,9 +12,8 @@ router = APIRouter()
 # Get all feeds
 @router.get("/feeds/", description="Returns all available feeds")
 def get_feeds(db: Session = Depends(get_db)):
-    feed = get_all_feeds_service(db)
-    return feed
-
+    feeds = get_all_feeds_service(db)
+    return feeds
 # Add a new feed
 @router.post("/feeds/", description="Add a new feed", response_model=FeedOut)
 def create_feed(payload: FeedCreate, db: Session = Depends(get_db)):
