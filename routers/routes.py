@@ -27,3 +27,8 @@ def create_feed(payload: FeedCreate, db: Session = Depends(get_db)):
 def get_feed(feed_id: int, db: Session = Depends(get_db)):
     feed = get_feed_service(db, id=feed_id)
     return feed
+
+# parse a feeds content by id
+@router.get("/feeds/{feed_id}/parse/", description="Parse a feeds content by id")
+def parse_feed(feed_id: int, db: Session = Depends(get_db)):
+    return parse_feed_service(db, id=feed_id)
