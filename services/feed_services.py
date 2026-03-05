@@ -27,3 +27,12 @@ def get_feed(db: Session, id: int):
         raise HTTPException(status_code=404, detail="not found")
 
     return feed
+
+# delete feed by id
+def delete_feed(db: Session, id: int):
+    feed = db.query(Feed).filter(Feed.id == id).first()
+    if not feed:
+        raise HTTPException(status_code=404, detail="not found")
+
+    db.delete(feed)
+    db.commit()
