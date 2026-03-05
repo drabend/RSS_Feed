@@ -6,7 +6,8 @@ from schemas import FeedCreate, FeedOut
 from services.feed_services import create_feed as create_feed_service
 from services.feed_services import get_all_feeds as get_all_feeds_service
 from services.feed_services import get_feed as get_feed_service
-
+from services.feed_services import delete_feed as delete_feed_service
+from services.feed_parser import parse_feed as parse_feed_service
 router = APIRouter()
 
 # Get all feeds
