@@ -18,8 +18,13 @@ def get_feeds(db: Session = Depends(get_db)):
 # Add a new feed
 @router.post("/feeds/", description="Add a new feed", response_model=FeedOut)
 def create_feed(payload: FeedCreate, db: Session = Depends(get_db)):
-    feed = create_feed_service(db, link=str(payload.link))
-    return feed
+    return create_feed_service(db, link=str(payload.link))
+
+
+# Delete a feed
+@router.delete("/feeds/{feed_id}/", description="Delete a feed by id")
+def delete_feed(feed_id: int, db: Session = Depends(get_db)):
+    delete_feed_service(db, id=feed_id)
 
 
 # Get a feed by id
