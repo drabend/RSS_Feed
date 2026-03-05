@@ -9,3 +9,7 @@ class FeedOut(BaseModel):
 
     class Config:
         from_attributes = True
+
+class HTTPExceptionOut(BaseModel):
+    status_code: int
+    detail: str
